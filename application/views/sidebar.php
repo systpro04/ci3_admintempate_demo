@@ -26,7 +26,7 @@
                     </a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="<?=base_url('data_view')?>">
+                    <a class="nav-link <?=(current_url()==base_url('data_view')) ? 'active':''?>" href="<?=base_url('data_view')?>">
                         <i class="nav-icon fas fa-align-right"></i>
                         <p>Adjustment</p>
                     </a>
