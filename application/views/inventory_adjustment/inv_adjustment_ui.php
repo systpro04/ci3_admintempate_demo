@@ -893,7 +893,7 @@ $(document).ready(function () {
     <div class="container-fluid ">
         <div class="row">
             <div class="col-md-12">
-                <div class="card mt-2" style="background-color: rgba(245, 245, 245, 0.57)"  >
+                <div class="card mt-5" style="background-color: rgba(245, 245, 245, 0.57)"  >
                     <div class="card-header bg-dark">
                         <ul class="nav nav-pills" role="tablist">
                             <li class="nav-item">
@@ -983,6 +983,9 @@ $(document).ready(function() {
         serverSide: true,
         responsive: true,
         stateSave: true,
+        pagingType: 'full_numbers',
+        lengthMenu: [ [5, 10, 25, 50, 100, 10000], [5, 10, 25, 50, 100, "Max"] ],
+        pageLength: 5,
         ajax: {
             url: "<?php echo base_url('get_inventory_data'); ?>",
             type: "POST",
@@ -1133,6 +1136,9 @@ $(document).ready(function() {
         serverSide: true,
         responsive: true,
         stateSave: true,
+        pagingType: 'full_numbers',
+        lengthMenu: [ [5, 10, 25, 50, 100, 10000], [5, 10, 25, 50, 100, "Max"] ],
+        pageLength: 5,
         ajax: {
             url: "<?php echo base_url('get_adjustment_history'); ?>",
             type: "POST",
