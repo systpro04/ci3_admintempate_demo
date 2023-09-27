@@ -850,14 +850,11 @@ $(document).ready(function () {
         background: transparent !important;
     }
     select {
-        -webkit-appearance:none;
-        -moz-appearance:none;
-        -ms-appearance:none;
         appearance:none;
         background: #eeebeb;
         border: 0 !important;
         flex: 1;
-        padding: 0 .5em;
+        padding: 0 .2em;
         color:#000000;
         cursor:pointer;
     }
@@ -867,9 +864,11 @@ $(document).ready(function () {
     .select {
         position: relative;
         display: flex;
+        align-items: center;
         width: 20em;
-        height: 3em;
+        height: 2.5em;
         line-height: 3;
+        margin-left: 2.5px;
         background: #00ffaa;
         overflow: hidden;
         border-radius: .25em;
@@ -885,82 +884,84 @@ $(document).ready(function () {
         pointer-events:none;
         transition:.25s all ease;
     }
-        .select:hover::after {
+    .select:hover::after {
         color: #23b42f;
     }
 
 </style> 
 <div class="content-wrapper" id="content-wrapper" >
-    <div class="row">
-        <div class="col-md-12">
-            <div class="card" style="background-color: rgba(245, 245, 245, 0.57)" >
-                <div class="card-header" >
-                    <ul class="nav nav-pills" role="tablist">
-                        <li class="nav-item">
-                            <a class="nav-link active" data-toggle="pill" href="#inventory" role="tab">
-                                <i class="fa fa-align-right"></i>&nbsp;&nbsp; Adjustments
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" data-toggle="pill" href="#adjust" role="tab">
-                                <i class="fa fa-file"></i>&nbsp;&nbsp; History Adjustments
-                                <span class="badge badge-danger" id="record"></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-                <div class="col-md-3" style="margin-top: 10px; margin-bottom: 10px;">
-                    <div class="select">
-                        <select id="group" class="selectpicker" aria-label="Choose Group Name">
-                            <option selected disabled>Choose Group Name</option>
-                            <option value="1">Corporate</option>
-                            <option value="2">Alturas Mall</option>
-                            <option value="3">Plaza Marcela</option>
-                            <option value="4">Island City Mall</option>
-                            <option value="6">Alturas Talibon</option>
-                            <option value="7">Alturas Tubigon</option>
-                            <option value="8">Central Distribution Center</option>
-                            <option value="11">Ubay Distribution Center</option>
-                            <option value="12">Cortes Construction</option>
-                            <option value="13">Ubay Dressing Plant</option>
-                        </select>
+    <div class="container-fluid ">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="card mt-2" style="background-color: rgba(245, 245, 245, 0.57)"  >
+                    <div class="card-header bg-dark">
+                        <ul class="nav nav-pills" role="tablist">
+                            <li class="nav-item">
+                                <a class="nav-link active" data-toggle="pill" href="#inventory" role="tab">
+                                    <i class="fa fa-align-right"></i>&nbsp;&nbsp; Adjustments
+                                </a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link" data-toggle="pill" href="#adjust" role="tab">
+                                    <i class="fa fa-file"></i>&nbsp;&nbsp; History Adjustments
+                                    <span class="badge badge-danger" id="record"></span>
+                                </a>
+                            </li>
+                            <li>
+                                <div class="select">
+                                    <select id="group" class="selectpicker" aria-label="Choose Group Name">
+                                        <option selected disabled>Choose Group Name</option>
+                                        <option value="1">Corporate</option>
+                                        <option value="2">Alturas Mall</option>
+                                        <option value="3">Plaza Marcela</option>
+                                        <option value="4">Island City Mall</option>
+                                        <option value="6">Alturas Talibon</option>
+                                        <option value="7">Alturas Tubigon</option>
+                                        <option value="8">Central Distribution Center</option>
+                                        <option value="11">Ubay Distribution Center</option>
+                                        <option value="12">Cortes Construction</option>
+                                        <option value="13">Ubay Dressing Plant</option>
+                                    </select>
+                                </div>
+                            </li>
+                        </ul>
                     </div>
-                </div>
-                <div class="card-body">
-                    <div class="tab-content">
-                        <div class="tab-pane fade show active" id="inventory" role="tabpanel">
-                            <table class="table table-striped table-hover" id="adjustTable" width="100%">
-                                <thead class="bg-primary text-center">
-                                    <tr>
-                                        <th>Item Code</th>
-                                        <th>Design Name</th>
-                                        <th>Category Type</th>
-                                        <th>Item Size</th>
-                                        <th>Gender Type</th>
-                                        <th>Stock</th>
-                                        <th>Batch Stock</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                            </table>
-                        </div>
-                        <div class="tab-pane fade" id="adjust" role="tabpanel">
-                            <table class="table table-striped table-hover" id="adjustHistTable" width="100%">
-                                <thead class="bg-primary text-center">
-                                    <tr>
-                                        <th></th>
-                                        <th>Item Code</th>
-                                        <th>Design Name</th>
-                                        <th>Item Size</th>
-                                        <th>Stock</th>
-                                        <th>New Stock</th>
-                                        <th>Batch Stock</th>
-                                        <th>New B-Stock</th>
-                                        <th>Status</th>
-                                        <th>Action</th>
-                                    </tr>
-                                </thead>
-                            </table>
+                    <div class="card-body">
+                        <div class="tab-content">
+                            <div class="tab-pane fade show active" id="inventory" role="tabpanel">
+                                <table class="table table-striped table-bordered shadow table-hover" id="adjustTable" width="100%">
+                                    <thead class="bg-primary text-center">
+                                        <tr>
+                                            <th>Item Code</th>
+                                            <th>Design Name</th>
+                                            <th>Category Type</th>
+                                            <th>Item Size</th>
+                                            <th>Gender Type</th>
+                                            <th>Stock</th>
+                                            <th>Batch Stock</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
+                            <div class="tab-pane fade" id="adjust" role="tabpanel">
+                                <table class="table table-striped table-bordered shadow table-hover" id="adjustHistTable" width="100%">
+                                    <thead class="bg-primary text-center">
+                                        <tr>
+                                            <th></th>
+                                            <th>Item Code</th>
+                                            <th>Design Name</th>
+                                            <th>Item Size</th>
+                                            <th>Stock</th>
+                                            <th>New Stock</th>
+                                            <th>Batch Stock</th>
+                                            <th>New B-Stock</th>
+                                            <th>Status</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1107,9 +1108,6 @@ $(document).ready(function() {
 			            timer: 1500,
                         position: 'top-end',
                         timerProgressBar: true,
-                        width: '300px',
-                        height: '50px',
-                        padding: '2em',
                     }).then(() => {
                         historyTable.ajax.reload();
                         $('#myModal').modal('hide');
@@ -1123,9 +1121,6 @@ $(document).ready(function() {
 			            timer: 1500,
                         position: 'top-end',
                         timerProgressBar: true,
-                        width: '300px',
-                        height: '50px',
-                        padding: '2em',
                     });
                 }
             },
@@ -1223,9 +1218,6 @@ $(document).ready(function() {
                     timer: 1500,
                     position: 'top-end',
                     timerProgressBar: true,
-                    width: '300px',
-                    height: '50px',
-                    padding: '2em',
                 });
                 if (response.success) {
                     historyTable.page(currentPage).draw('page');
@@ -1291,9 +1283,6 @@ $(document).ready(function() {
                     timer: 1500,
                     position: 'top-end',
                     timerProgressBar: true,
-                    width: '300px',
-                    height: 'auto',
-                    padding: '2em',
                 });
             },
         });
