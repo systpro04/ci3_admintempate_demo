@@ -11,25 +11,23 @@
         <link rel="stylesheet" href="https://code.ionicframework.com/ionicons/2.0.1/css/ionicons.min.css">
         <link rel="stylesheet" href="<?php echo base_url('assets/dist/css/adminlte.min.css') ?>">
         <link rel="stylesheet" href="<?php echo base_url('assets/plugins/overlayScrollbars/css/OverlayScrollbars.min.css') ?>">
-        <link rel="stylesheet" href="<?php echo base_url('assets/plugins/daterangepicker/daterangepicker.css') ?>">
     </head>
 
     <body class="hold-transition sidebar-mini layout-fixed">
+
+
+
         <div class="wrapper">
             <?php $this->load->view('navbar'); ?>
             <?php $this->load->view('sidebar'); ?>
         </div>
+
+
+
+        <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
         <script src="<?php echo base_url('assets/plugins/jquery/jquery.min.js') ?>"></script>
-        <script src="<?php echo base_url('assets/plugins/jquery-ui/jquery-ui.min.js') ?>"></script>
-        <script>
-        $.widget.bridge('uibutton', $.ui.button)
-        </script>
         <script src="<?php echo base_url('assets/plugins/bootstrap/js/bootstrap.bundle.min.js') ?>"></script>
-        <script src="<?php echo base_url('assets/plugins/chart.js/Chart.min.js') ?>"></script>
-        <script src="plugins/sparklines/sparkline.js"></script>
-        <script src="<?php echo base_url('assets/plugins/jqvmap/jquery.vmap.min.js') ?>"></script>
-        <script src="<?php echo base_url('assets/plugins/moment/moment.min.js') ?>"></script>
-        <script src="<?php echo base_url('assets/plugins/daterangepicker/daterangepicker.js') ?>"></script>
         <script src="<?php echo base_url('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') ?>"></script>
         <script src="<?php echo base_url('assets/dist/js/adminlte.js') ?>"></script>
     </body>

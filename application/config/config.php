@@ -24,7 +24,7 @@ date_default_timezone_set('Asia/Manila');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://127.0.0.1/codeigniter-3.1.13'; 
+$config['base_url'] = 'http://localhost/codeigniter-3.1.13/'; 
 
 
 /*
@@ -37,7 +37,7 @@ $config['base_url'] = 'http://127.0.0.1/codeigniter-3.1.13';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------

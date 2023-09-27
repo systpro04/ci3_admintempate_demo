@@ -54,9 +54,9 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 
-$route['data_view']                                    = 'AdjustmentController/inv_adjustments';
-$route['history_view']                                 = 'AdjustmentController/inv_adjustment_history';
-$route['get_inventory_data']                           = 'AdjustmentController/get_inventory_data';
-$route['get_adjustment_history']                       = 'AdjustmentController/view_adjustment_history';
-$route['update_data']                                  = 'AdjustmentController/update_inventory_data';
-$route['update_status']                                = 'AdjustmentController/update_status';
+$route['data_view']                                    = 'InventoryAdjustment/AdjustmentController/inv_adjustments';
+$route['history_view']                                 = 'InventoryAdjustment/AdjustmentController/inv_adjustment_history';
+$route['get_inventory_data']                           = 'InventoryAdjustment/AdjustmentController/get_inventory_data';
+$route['get_adjustment_history']                       = 'InventoryAdjustment/AdjustmentController/view_adjustment_history';
+$route['update_data']                                  = 'InventoryAdjustment/AdjustmentController/update_inventory_data';
+$route['update_status']                                = 'InventoryAdjustment/AdjustmentController/update_status';

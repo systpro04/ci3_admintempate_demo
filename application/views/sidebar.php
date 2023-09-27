@@ -18,20 +18,17 @@
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
                 <li class="nav-item">
-                    <a href="#" class="nav-link">
+                    <a class="nav-link <?=(current_url()==base_url('dashboard')) ? 'active':''?>" href="<?=base_url('dashboard')?>">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
                             Dashboard
                         </p>
                     </a>
                 </li>
-
                 <li class="nav-item">
-                    <a href="<?php echo base_url('data_view') ?>" class="nav-link" >
+                    <a class="nav-link" href="<?=base_url('data_view')?>">
                         <i class="nav-icon fas fa-align-right"></i>
-                        <p>
-                            Adjustment
-                        </p>
+                        <p>Adjustment</p>
                     </a>
                 </li>
             </ul>
