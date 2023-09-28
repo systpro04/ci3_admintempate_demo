@@ -14,9 +14,6 @@
     </head>
 
     <body class="hold-transition sidebar-mini layout-fixed">
-
-
-
         <div class="wrapper">
             <?php $this->load->view('navbar'); ?>
             <?php $this->load->view('sidebar'); ?>

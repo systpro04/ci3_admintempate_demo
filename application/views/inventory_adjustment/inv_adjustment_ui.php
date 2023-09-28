@@ -893,16 +893,16 @@ $(document).ready(function () {
     <div class="container-fluid ">
         <div class="row">
             <div class="col-md-12">
-                <div class="card mt-5" style="background-color: rgba(245, 245, 245, 0.57)"  >
+                <div class="card mt-2" style="background-color: rgba(245, 245, 245, 0.57)"  >
                     <div class="card-header bg-dark">
                         <ul class="nav nav-pills" role="tablist">
                             <li class="nav-item">
-                                <a class="nav-link active" data-toggle="pill" href="#inventory" role="tab">
+                                <a class="nav-link active" data-toggle="tab" href="#inventory" role="tab">
                                     <i class="fa fa-align-right"></i>&nbsp;&nbsp; Adjustments
                                 </a>
                             </li>
                             <li class="nav-item">
-                                <a class="nav-link" data-toggle="pill" href="#adjust" role="tab">
+                                <a class="nav-link" data-toggle="tab" href="#adjust" role="tab">
                                     <i class="fa fa-file"></i>&nbsp;&nbsp; History Adjustments
                                     <span class="badge badge-danger" id="record"></span>
                                 </a>
@@ -970,10 +970,11 @@ $(document).ready(function () {
     </div>
 </div>
 
-<link rel="stylesheet" type="text/css" href="//cdn.datatables.net/1.10.12/css/jquery.dataTables.min.css" />
-<script src="//cdn.datatables.net/1.10.12/js/jquery.dataTables.min.js"></script>
+<link href="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.css" rel="stylesheet">
+<script src="https://cdn.datatables.net/v/dt/dt-1.13.6/datatables.min.js"></script>
+
 <!--****************************ADJUST DATATABLE***********************  -->
-<script type="text/javascript">
+<script>
 $(document).ready(function() {
     let select_group = JSON.parse(localStorage.getItem("select_group_id")) || { group_id: 1 };
     let select_groupId = select_group.group_id;
@@ -981,11 +982,13 @@ $(document).ready(function() {
 
     var adjustTable = $('#adjustTable').DataTable({
         serverSide: true,
-        responsive: true,
         stateSave: true,
         pagingType: 'full_numbers',
-        lengthMenu: [ [5, 10, 25, 50, 100, 10000], [5, 10, 25, 50, 100, "Max"] ],
-        pageLength: 5,
+        scrollCollapse: true,
+        scrollY: '40vh',
+        scrollX: true,
+        lengthMenu: [ [10, 25, 50, 100, 10000], [10, 25, 50, 100, "Max"] ],
+        pageLength: 10,
         ajax: {
             url: "<?php echo base_url('get_inventory_data'); ?>",
             type: "POST",
@@ -1134,11 +1137,13 @@ $(document).ready(function() {
 
     var historyTable = $('#adjustHistTable').DataTable({
         serverSide: true,
-        responsive: true,
         stateSave: true,
+        scrollCollapse: true,
+        scrollY: '40vh',
+        scrollX: true,
         pagingType: 'full_numbers',
-        lengthMenu: [ [5, 10, 25, 50, 100, 10000], [5, 10, 25, 50, 100, "Max"] ],
-        pageLength: 5,
+        lengthMenu: [ [10, 25, 50, 100, 10000], [10, 25, 50, 100, "Max"] ],
+        pageLength: 10,
         ajax: {
             url: "<?php echo base_url('get_adjustment_history'); ?>",
             type: "POST",
@@ -1305,6 +1310,7 @@ $(document).ready(function() {
 
     $('a[data-toggle="tab"]').on('shown.bs.tab', function (e) {
         var active_tab = $(e.target).attr("href");
+        $.fn.dataTable.tables({ visible: true, api: true }).columns.adjust();
 
         organizedTabs(active_tab, 'adjustTable', adjustTable);
         organizedTabs(active_tab, 'adjustHistTable', historyTable);
