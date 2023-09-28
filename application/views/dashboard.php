@@ -121,8 +121,6 @@
     </section>
 </div>
 
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-
 <script>
     const pendingCountBar = <?php echo $pending_count; ?>;
     const approvedCountBar = <?php echo $approved_count; ?>;
