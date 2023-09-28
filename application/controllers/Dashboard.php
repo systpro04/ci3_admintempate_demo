@@ -18,10 +18,20 @@ class Dashboard extends CI_Controller {
 	 * map to /index.php/welcome/<method_name>
 	 * @see https://codeigniter.com/userguide3/general/urls.html
 	 */
+
+	public function __construct() 
+	{
+		parent::__construct();
+		$this->load->model('AdjustmentModel');
+	}
 	public function index()
 	{
+		$data['all_history_adjust'] = $this->AdjustmentModel->count_all();
+		$data['pending_count'] = $this->AdjustmentModel->count_pending();
+		$data['approved_count'] = $this->AdjustmentModel->count_approved();
+		$data['disapproved_count'] = $this->AdjustmentModel->count_disapproved();
 		$this->load->view('header');
-		$this->load->view('dashboard');
+		$this->load->view('dashboard', $data);
 		$this->load->view('footer');
 
 	}

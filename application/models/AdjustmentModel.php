@@ -74,6 +74,27 @@ class AdjustmentModel extends CI_Model {
         $this->db->where('adj_new_id', $adj_new_id);
         return $this->db->update('uni_admin_adjustment', $data);
     }
+
+    public function count_all(){
+        $this->db->from('uni_admin_adjustment');
+        return $this->db->count_all_results();
+    }
+
+    public function count_pending(){
+        $this->db->where('adj.adj_new_status', 'pending');
+        $this->db->from('uni_admin_adjustment adj');
+        return $this->db->count_all_results();
+    }
+    public function count_approved(){
+        $this->db->where('adj.adj_new_status', 'approved');
+        $this->db->from('uni_admin_adjustment adj');
+        return $this->db->count_all_results();
+    }
+    public function count_disapproved(){
+        $this->db->where('adj.adj_new_status', 'disapproved');
+        $this->db->from('uni_admin_adjustment adj');
+        return $this->db->count_all_results();
+    }
 }
 
 
