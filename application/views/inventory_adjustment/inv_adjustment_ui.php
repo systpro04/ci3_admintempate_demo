@@ -839,13 +839,6 @@ $(document).ready(function () {
     @media(min-width:768px) {
         #page-wrap { position: inherit; margin: 0 0 0 250px; padding: 0 30px;}
     }    
-    #content-wrapper
-    {
-        background-image: url(<?php echo base_url('assets/img/background.jpg') ?>);
-        background-attachment: fixed;
-        background-repeat: no-repeat;
-        background-position: top left;
-    }
     table td, table tr, table th, thead{
         background: transparent !important;
     }

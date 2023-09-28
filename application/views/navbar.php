@@ -2,9 +2,9 @@
     <div class="navbar-header" style="background: darkslategray;border-bottom: 3px solid goldenrod;">
         <div class="container">
             <!-- Logo -->
-            <a class="logo" href="index.html">
+            <a class="logo" href="#">
                 <span class="hidden-xs">
-                <img src="assets/img/ebm.png" alt="home" class="light-logo"/>
+                    <img src="assets/img/ebm.png" alt="home" class="light-logo"/>
                 </span>
             </a>
         </div>

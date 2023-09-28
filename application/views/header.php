@@ -29,5 +29,13 @@
         <script src="<?php echo base_url('assets/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') ?>"></script>
         <script src="<?php echo base_url('assets/dist/js/adminlte.js') ?>"></script>
     </body>
-
+    <style>
+        #content-wrapper
+    {
+        background-image: url(<?php echo base_url('assets/img/background.jpg') ?>);
+        background-attachment: fixed;
+        background-repeat: no-repeat;
+        background-position: top left;
+    }
+    </style>
 </html>

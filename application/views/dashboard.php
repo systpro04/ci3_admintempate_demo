@@ -1,12 +1,13 @@
-<div class="content-wrapper">
+
+<div class="content-wrapper" id="content-wrapper">
     <div class="content-header">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Dashboard</h1>
+                    <h1 class="mt-1">Dashboard</h1>
                 </div>
                 <div class="col-sm-6">
-                    <ol class="breadcrumb float-sm-right">
+                    <ol class="breadcrumb float-sm-right mt-1">
                         <li class="breadcrumb-item"><a href="#">Home</a></li>
                         <li class="breadcrumb-item active">Dashboard</li>
                     </ol>
@@ -75,10 +76,9 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-6">
-                    <div class="card card-danger">
+                    <div class="card card-primary" style="background-color: rgba(245, 245, 245, 0.57)">
                         <div class="card-header">
                             <h3 class="card-title">Donut Chart</h3>
-
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
@@ -95,10 +95,9 @@
                     </div>
                 </div>
                 <div class="col-md-6">
-                    <div class="card card-info">
+                    <div class="card card-primary" style="background-color: rgba(245, 245, 245, 0.57)">
                         <div class="card-header">
                             <h3 class="card-title">Line Chart</h3>
-
                             <div class="card-tools">
                                 <button type="button" class="btn btn-tool" data-card-widget="collapse">
                                     <i class="fas fa-minus"></i>
@@ -122,6 +121,9 @@
 </div>
 
 <script>
+
+    //******************** BAR CHART ******************//
+
     const pendingCountBar = <?php echo $pending_count; ?>;
     const approvedCountBar = <?php echo $approved_count; ?>;
     const disapprovedCountBar = <?php echo $disapproved_count; ?>;
@@ -131,7 +133,7 @@
         datasets: [{
             label: 'Counts',
             data: [pendingCountBar, approvedCountBar, disapprovedCountBar],
-            backgroundColor: ['#FFC107', '#28A745', '#DC3545'],
+            backgroundColor: ['#DC3545','#28A745','#0749ff'],
             borderColor: '#FFFFFF',
             borderWidth: 1
         }]
@@ -168,6 +170,7 @@
     const ctxBar = document.getElementById('barChart').getContext('2d');
     const barChart = new Chart(ctxBar, configBar);
 
+    //******************** DONUT CHART ******************//
     const pendingCountDonut = <?php echo $pending_count; ?>;
     const approvedCountDonut = <?php echo $approved_count; ?>;
     const disapprovedCountDonut = <?php echo $disapproved_count; ?>;
@@ -176,7 +179,7 @@
         labels: ['Pending', 'Approved', 'Disapproved'],
         datasets: [{
             data: [pendingCountDonut, approvedCountDonut, disapprovedCountDonut],
-            backgroundColor: ['#FFC107', '#28A745', '#DC3545'],
+            backgroundColor: ['#DC3545','#28A745','#FFC107'],
             borderColor: '#FFFFFF',
         }]
     };
