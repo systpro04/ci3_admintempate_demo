@@ -133,7 +133,7 @@
         datasets: [{
             label: 'Counts',
             data: [pendingCountBar, approvedCountBar, disapprovedCountBar],
-            backgroundColor: ['#DC3545','#28A745','#0749ff'],
+            backgroundColor: ['#DC3545','#28A745','#FFC107'],
             borderColor: '#FFFFFF',
             borderWidth: 1
         }]

@@ -25,9 +25,9 @@ class AdjustmentController extends CI_Controller
         $start      = $this->input->post('start');
         $length     = $this->input->post('length');
         $search     = $this->input->post('search')['value'];
-        $column     = isset($order[0]['column']) ? $order[0]['column'] : 0;
-        $order_dir  = isset($order[0]['dir']) ? $order[0]['dir'] : 'asc';
-        $columns    = [ 'item_code', 'design_name', 'cat_type', 'item_size', 'gender_status', 'quantity', 'b_remain_qty'];
+        $column     = $this->input->post('order')[0]['column'];
+        $order_dir  = $this->input->post('order')[0]['dir'];
+        $columns    = ['inv_id', 'batch_id', 'item_code', 'design_name', 'cat_type', 'item_size', 'gender_status', 'quantity', 'b_remain_qty'];
         $order_by    = $columns[$column];
 
         $recordsTotal = count($this->AdjustmentModel->get_adjustment($group_id, 0, 99999,  $search, $order_by, $order_dir));
@@ -45,6 +45,8 @@ class AdjustmentController extends CI_Controller
     public function update_inventory_data()
     {
         $data = array(
+
+            'adj_new_id'            =>      $this->input->post('adj_new_id'),
             'adj_new_itemcode'      =>      $this->input->post('adj_new_itemcode'),
             'adj_new_reason'        =>      $this->input->post('adj_new_reason'),
             'adj_new_cat_type'      =>      $this->input->post('adj_new_cat_type'),
@@ -62,6 +64,13 @@ class AdjustmentController extends CI_Controller
         );
         $update_result = $this->AdjustmentModel->insert_data($data);
         if ($update_result) {
+            $inv_id = $this->input->post('inv_id');
+            $batch_id = $this->input->post('batch_id');
+            $quantity = $this->input->post('adj_new_quantity');
+            $b_remain_qty = $this->input->post('adj_new_batchqty');
+    
+            $this->AdjustmentModel->update_inventory_and_batch_quantity($inv_id, $quantity, $batch_id, $b_remain_qty);
+            
             $response['success'] = true;
         } else {
             $response['success'] = false;
@@ -70,14 +79,6 @@ class AdjustmentController extends CI_Controller
         echo json_encode($response);
     }
 
-    // public function inv_adjustment_history() 
-    // {
-    //     $this->load->view('header');
-    //     $this->load->view('inventory_adjustment/modal/adjustment_history_modal');
-    //     $this->load->view('inventory_adjustment/inv_adjustment_history_ui');
-    //     $this->load->view('footer');
-    // }
-
     public function view_adjustment_history()
     {
         $group_id   =   $this->input->post('group_id');
@@ -85,10 +86,10 @@ class AdjustmentController extends CI_Controller
         $start      =   $this->input->post('start');
         $length     =   $this->input->post('length');
         $search     =   $this->input->post('search')['value'];
-        $column = isset($order[0]['column']) ? $order[0]['column'] : 0;
-        $order_dir = isset($order[0]['dir']) ? $order[0]['dir'] : 'asc';
+        $column     = $this->input->post('order')[0]['column'];
+        $order_dir  = $this->input->post('order')[0]['dir'];
 
-        $columns = ['adj_new_itemcode', 'adj_new_cat_type', 'adj_new_design_name', 'adj_old_quantity', 'adj_new_quantity', 'adj_old_batchqty', 'adj_new_batchqty', 'adj_new_date', 'adj_new_reason'];
+        $columns    = ['adj_new_itemcode', 'adj_new_cat_type', 'adj_new_design_name', 'adj_old_quantity', 'adj_new_quantity', 'adj_old_batchqty', 'adj_new_batchqty', 'adj_new_date', 'adj_new_reason', 'adj_new_status'];
         $order_by       = $columns[$column];
         
         $recordsTotal   = count($this->AdjustmentModel->get_adjustment_history($group_id, 0, 99999, $search, $order_by, $order_dir));
@@ -115,13 +116,9 @@ class AdjustmentController extends CI_Controller
         );
         $update_result = $this->AdjustmentModel->updateStatus($data, $adj_new_id);
         
-        $response = array();
-        if ($update_result) {
-            $response['success'] = true;
-        } else {
-            $response['success'] = false;
-            $response['message'] = 'Error: Database update failed.';
-        }
+        $response = array(
+            'success' => true,
+        );
         echo json_encode($response);
     }
 }
